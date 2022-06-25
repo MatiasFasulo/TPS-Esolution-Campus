@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Convertir JSON a objeto JS</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Convertir JSON a objeto JS</h1>
+
+<p>
+    Introduzca el JSON que desea convertir en el cuadro de texto a continuación:
+</p>
+
+<textarea id="json" rows="10" cols="50"></textarea><br>
+<button onclick="convertir()">Convertir</button><br><br>
+
+<p>
+    El resultado de la conversión se muestra a continuación:
+</p>
+
+<textarea id="resultado" rows="10" cols="50"></textarea>
+
+<script>
+    function convertir() {
+        // Obtener el valor del cuadro de texto con id "json"
+        var json = document.getElementById('json').value;
+
+        // Convertir la cadena de texto en un objeto JS
+        
+
+        function convertir(){
+            var json = document.getElementById('json').value;
+            //Pasar la cadena a un array de caracteres
+            var arrayJSON = json.split("");
+            var length = arrayJSON.length;  
+            var contador = 0;
+            var objeto = "";
+            var resultado = {};
+            var llave = "";
+            var valor = "";
+            var par = "";
+            var codigoAscii = "";
+            var cadena = "";
+            var comillas = false;
+
+            //Recorrer el array
+            for(let i = 0; i < length; i++){
+                contador++;
+                codigoAscii = arrayJSON[i].charCodeAt();
+
+                //Validar que la primera posición del array no contenga ningún caracter
+                if(i == 0){
+                    if(codigoAscii != 34){
+                        alert("La cadena no comienza con comillas dobles");
+                        break;
+                    }
+                }
+
+                //Validar que la última posición del array no contenga ningún caracter
+                if(i == (length - 1)){
+                    if(codigoAscii != 34){
+                        alert("La cadena no termina con comillas dobles");
+                        break;
+                    }
+                }
+
+                //Validar si se cumple la condición para cerrar llave
+                if(i != 0 && i != (length - 1)){
+                    if(codigoAscii == 58 && comillas == false){
+                        par = objeto.split(":");
+                        llave = par[0];
+                        valor = par[1];
+                        resultado[llave] = valor;
+                        objeto = "";
+                        contador = 0;
+                        continue;
+                    }
+                }
+
+                //Validar que la cadena no contenga comas
+                if(codigoAscii == 44){
+                    alert("La cadena contiene comas");
+                    break;
+                }
+
+                //Validar que la cadena no contenga llaves
+                if(codigoAscii == 123 || codigoAscii == 125){
+                    alert("La cadena contiene llaves");
+                    break;
+                }
+
+                //Validar que los valores se encuentren entre comillas dobles
+                if(codigoAscii == 34){
+                    comillas = !comillas;
+                    continue;
+                }
+
+                //Concatenar los caracteres en una cadena
+                cadena += arrayJSON[i];
+
+                //Almacenar la cadena en el objeto
+                objeto += cadena;
+                cadena = "";
+            }
+
+            //Agregar la última llave y valor del objeto
+            par = objeto.split(":");
+            llave = par[0];
+            valor = par[1];
+            resultado[llave] = valor;
+
+      //Mostrar resultado
+        document.getElementById("resultado").innerHTML = JSON.stringify(resultado);}
+
+        // Mostrar el objeto JS en el cuadro de texto con id "resultado"
+        document.getElementById('resultado').value = JSON.stringify(obj);
+    }
+</script>
+
+</body>
+</html>
+
+
+AGREGAR
+CAMBIAR 
+<sipt src=""></script> function myFunction() {    document.getElementById("demo").innerHTML = ".";
+  }
