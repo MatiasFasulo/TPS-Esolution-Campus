@@ -1,0 +1,17 @@
+body {
+    background-color: rgba(0, 191, 255, 0.535);
+    color: dark-gray;
+    font-family: Calibri light;
+}
+
+.contenedor-principal {
+    text-align: center;
+    width: 70vw;
+    background-color: #f4fcff;
+    margin: 0 auto;
+    margin-top: 3rem;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.47);
+}
+
