@@ -77,9 +77,15 @@ export class CourseService {
   }
 
   getCoursesInProgress(): Observable<Course[]> {
-    const courses =  of([{ id: 3, name: "React"}, { id: 4, name: "Angular"}]);
-    this.messageService.add("[CourseService]: cursos en desarrollo cargados.")
-    return courses;
+    let courses: Course[] = [];
+    this.getCourses().subscribe(c => {
+      for(let item of c) {
+        if(item.inProgress){
+          courses.push(item);
+        }
+      }
+    });
+    return of(courses);
   }
 }
 

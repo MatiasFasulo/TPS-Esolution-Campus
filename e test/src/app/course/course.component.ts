@@ -43,4 +43,9 @@ export class CourseComponent implements OnInit {
     )
   }
 
+  inProgress(course: Course): void {
+    course.inProgress = true;
+    this.courseService.updateCourse(course).subscribe();
+  }
+
 }

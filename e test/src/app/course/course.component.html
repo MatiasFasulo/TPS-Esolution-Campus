@@ -20,5 +20,10 @@
                 class="delete"
                 (click)="delete(course)"
         >x</button>
+        <button type="button"
+            (click)="inProgress(course)"
+            *ngIf="!course.inProgress">
+            +
+        </button>
     </li>
 </ul>

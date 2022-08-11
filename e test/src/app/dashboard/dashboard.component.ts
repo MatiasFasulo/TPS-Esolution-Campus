@@ -22,5 +22,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getCourses();
   }
+  
+  notInProgress(course: Course): void {
+    course.inProgress = false;
+    this.courses = this.courses.filter(c => c !== course);
+    this.courseService.updateCourse(course).subscribe();
+  }
 
 }
